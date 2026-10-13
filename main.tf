@@ -12,7 +12,7 @@ module "logs" {
 module "assets" {
   source             = "./modules/s3_bucket"
   bucket_name        = "myname-assets-bucket-123"
-  versioning_enabled = false
+  versioning_enabled = true 
   tags               = { purpose = "assets" }
 }
 

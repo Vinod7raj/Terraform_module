@@ -1,3 +1,5 @@
+# Accepted: practice bucket, no separate log bucket
+#tfsec:ignore:aws-s3-enable-bucket-logging
 resource "aws_s3_bucket" "sample_bucket" {
   bucket = var.bucket_name
   acl    = "private"
@@ -18,6 +20,9 @@ resource "aws_s3_bucket_versioning" "sample_bucket_versioning" {
   }
 }
 
+
+# Accepted: practice bucket, AWS-managed AES256 is enough; a KMS key adds cost
+#tfsec:ignore:aws-s3-encryption-customer-key
 resource "aws_s3_bucket_server_side_encryption_configuration" "sample_bucket_encryption" {
   bucket = aws_s3_bucket.sample_bucket.id
 
