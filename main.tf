@@ -6,7 +6,7 @@ module "logs" {
   source             = "./modules/s3_bucket"
   bucket_name        = "myname-logs-bucket-123"
   versioning_enabled = true 
-  tags               = { purpose = "logs" }
+  tags               = { purpose = "log" }
 }
 
 module "assets" {
