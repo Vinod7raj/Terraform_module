@@ -5,7 +5,7 @@ provider "aws" {
 module "logs" {
   source             = "./modules/s3_bucket"
   bucket_name        = "myname-logs-bucket-123"
-  versioning_enabled = true 
+  versioning_enabled = true
   tags               = { purpose = "log" }
 }
 
