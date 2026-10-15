@@ -13,6 +13,12 @@ pipeline {
         archiveArtifacts 'plan.txt'
       }
     }
+
+stage('Debug') {
+  steps {
+    echo "BRANCH_NAME=${env.BRANCH_NAME} GIT_BRANCH=${env.GIT_BRANCH}"
+  }
+}
     stage('Approve') {
       when { branch 'master' }
       steps { timeout(time: 30, unit: 'MINUTES') { input message: 'Apply this plan?' } }
