@@ -6,7 +6,7 @@ resource "aws_s3_bucket" "sample_bucket" {
 
   tags = {
     Name        = "My Sample Bucket"
-    Environment = "Dev"
+    Environment = "QA"
   }
 
 }
@@ -17,10 +17,6 @@ resource "aws_s3_bucket_versioning" "sample_bucket_versioning" {
 
   versioning_configuration {
     status = "Enabled"
-  }
-  tags = {
-    Name        = "My versioning"
-    Environment = "Dev"
   }
 }
 
