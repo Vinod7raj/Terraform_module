@@ -21,7 +21,7 @@ resource "aws_s3_bucket_versioning" "sample_bucket_versioning" {
   tags = {
     Name        = "My versioning"
     Environment = "Dev"
-}
+  }
 }
 
 # Accepted: practice bucket, AWS-managed AES256 is enough; a KMS key adds cost
