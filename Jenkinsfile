@@ -19,14 +19,14 @@ stage('Debug') {
     echo "BRANCH_NAME=${env.BRANCH_NAME} GIT_BRANCH=${env.GIT_BRANCH}"
   }
 }
-    stage('Approve') {
-      when { branch 'master' }
-      steps { timeout(time: 30, unit: 'MINUTES') { input message: 'Apply this plan?' } }
-    }
-    stage('Apply') {
-      when { branch 'master' }
-      steps { sh 'terraform apply -input=false tfplan' }
-    }
+ stage('Approve') {
+  when { expression { env.GIT_BRANCH == 'origin/master' } }
+  steps { timeout(time: 30, unit: 'MINUTES') { input message: 'Apply this plan?' } }
+}
+stage('Apply') {
+  when { expression { env.GIT_BRANCH == 'origin/master' } }
+  steps { sh 'terraform apply -input=false tfplan' }
+}
   }
   post { always { cleanWs() } }
 }
